@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['TEMPLATE_AUTO_RELOAD'] = True
@@ -8,6 +9,7 @@ app.config['SECRET_KEY'] = 'random_value'
 
 
 db = SQLAlchemy(app)
+Bootstrap(app)
 
 
 class Mail(db.Model):
