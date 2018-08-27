@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block heading %}
+Enter Student Details
+{%endblock heading%}
+{% block body %}
+  <h1>Sign In</h1>
+    <form action="{{url_for('signin')}}" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </p>
+        <p>
+            {{form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>
+        {{ form.email.label }}<br>
+               {{ form.email(size=32) }}
+               <br>
+               </p>
+               <p>
+            {{ form.phone.label }}<br>
+            {{ form.phone(size=12) }}
+        </p>
+               <p>
+               {{ form.age.label }}<br>
+               {{ form.age }}
+               <br></p>
+               <p>
+               {{ form.language.label }}<br>
+               {{ form.language }}
+               </p>
+               <p>{{ form.Gender.label }} <br>{{ form.Gender }}</p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {%endblock body%}

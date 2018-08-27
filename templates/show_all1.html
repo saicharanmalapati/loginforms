@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show All</title>
+</head>
+<body>
+<center>
+
+    <h3>Students(<a href="{{url_for('new')}}">Add Student</a>)</h3>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Pin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students.items %}
+            <tr>
+                <td>{{student.name}}</td>
+                <td>{{student.city}}</td>
+                <td>{{student.addr}}</td>
+                <td>{{student.pin}}</td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+        {% for page_num in students.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+              {% if page_num %}
+                        {% if students.page == page_num %}
+
+                  <a class="btn btn-info mb-4" href="{{ url_for('show_all1', page=page_num) }}">{{ page_num }}</a>
+
+             {% else %}
+             <a class="btn btn-outline-info mb-4" href="{{ url_for('show_all1', page=page_num) }}">{{ page_num }}</a>
+               {% endif %}
+               {% else %}
+               ...
+              {% endif %}
+            {% endfor %}
+    </table>
+</center>
+</body>
+</html>
